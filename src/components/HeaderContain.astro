@@ -1,0 +1,41 @@
+<div class="contain">
+    <h1>Hello there, I'm
+        <span class="name">Juan Torres</span>
+        a Frontend Developer
+    </h1>
+    
+</div>
+
+<style>
+    .contain {
+        display: flex;
+        align-items: center;
+        height: 100ch;
+    }
+    h1 {
+        color: white;
+        line-height: 1.2;
+        font-size: 7.2rem;
+    }
+    .name {
+        display: block;
+        font-size: 15rem;
+        background: linear-gradient(90deg, rgba(0,133,255,1) 0%, rgba(243,28,225,1) 21%, rgba(53,55,232,1) 48%, rgba(239,213,68,1) 74%, rgba(105,180,255,1) 100%);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-size: 300% 300%;
+        animation: gradient 5s ease-in-out infinite;
+    }
+    @keyframes gradient {
+        0% {
+            background-position: 0% 50%;
+        }
+        50% {
+            background-position: 100% 50%;
+        }
+        100% {
+            background-position: 0% 50%;
+        }
+    }
+
+</style>
