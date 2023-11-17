@@ -1,0 +1,52 @@
+---
+const black = "#060606";
+---
+<section id="about">
+    <div class="contain contenedor">
+        <h1 class="heading">About Me</h1>
+        <p class="description">
+            I am an enthusiastic front-end developer seeking my first professional opportunity to apply and further expand my technical skills. Although I have no formal labor in the tech field, I have gained a solid knowledge of key front-end development technologies through my independent learning and personal projects.
+        </p>
+    </div>
+</section>
+<style define:vars={{black}}>
+    #about {
+        background-color: var(--black);
+        height: 50rem;
+        display: flex;
+        align-items: center;
+    }
+    .contain {
+        display: grid;
+    }
+    .heading {
+        color: white;
+        font-size: 4rem;
+        text-transform: uppercase;
+        text-align: center;
+        margin-bottom: 3rem;
+    }
+    .description {
+        color: white;
+        font-size: 1.7rem;
+        line-height: 1.9;
+    }   
+    /*--------------- Responsive Design ------------*/
+    @media only screen and (min-width: 768px) {
+        .contain {
+            display: grid;
+            align-items: center;
+            grid-template-columns: 1fr 1fr;
+            grid-template-rows: none;
+            gap: 2rem;
+        }
+        .heading {
+            font-size: 7.2rem;
+            text-transform: uppercase;
+            margin: 0;
+        }
+        .description {
+            font-size: 2rem;
+        } 
+    }
+</style>

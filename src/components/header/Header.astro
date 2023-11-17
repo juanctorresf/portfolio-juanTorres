@@ -1,0 +1,36 @@
+---
+import About from "../about/About.astro";
+import HeaderContain from "./HeaderContain.astro";
+import Navbar from "./Navbar.astro";
+
+const black = "#060606";
+---
+<header>
+    <div class="contenedor">
+        <HeaderContain />
+    </div>
+</header>
+
+<style define:vars={{black}}>
+    header {
+        height: 100vh;
+        margin: 0;
+        background-image:linear-gradient(to top, rgba(6,6,6,1),rgba(6,6,6,0.8) ), url("../../../public/espectro640x427.jpg");
+        background-repeat: no-repeat;
+        background-size: cover;
+    }
+    
+    @media only screen and (min-width: 1024px) {
+        header {
+            background-image:linear-gradient(to top, rgba(6,6,6,1),rgba(6,6,6,0.8) ), url("../../../public/espectro1280x853.jpg");
+            background-size: cover;
+            background-repeat: no-repeat;
+        }
+    }
+    @media only screen and (min-width: 2024px) {
+        header {
+            background-image:linear-gradient(to top, rgba(6,6,6,1),rgba(6,6,6,0.8) ), url("../../../public/espectro4608x3072.jpg");
+        }
+        
+    }
+</style>

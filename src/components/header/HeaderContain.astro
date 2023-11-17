@@ -1,0 +1,117 @@
+---
+import Navbar from "./Navbar.astro";
+
+---
+
+<div class="contain">
+    <Navbar/>
+    <div class="animation-scrol">
+        <h1 class="heading-global">
+            Hello there, I'm
+                <span class="name-animation"><span class="name">Juan Torres</span></span>
+            a Frontend Developer
+        </h1>
+    </div>
+</div>
+
+<style>
+    .contain {
+        display: flex;
+        align-items: center;
+        margin: 0 auto;
+        height: 100vh;
+    }
+    .heading-global {
+        color: white;
+        line-height: 1.2;
+        font-size: 3rem;
+        animation-name: displayHeading;
+        animation-duration: .5s;
+    }
+    .animation-scrol {
+        animation-name: scroll;
+        animation-duration: 1s;
+        animation-direction: alternate;
+        animation-timeline: scroll(root);
+
+    }
+    .name {
+        display: block;
+        font-size: 8rem;
+        background: linear-gradient(90deg, rgba(0,133,255,1) 0%, rgba(243,28,225,1) 21%, rgba(53,55,232,1) 48%, rgba(239,213,68,1) 74%, rgba(105,180,255,1) 100%);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-size: 300% 300%;
+
+        animation: gradient 5s ease-in-out infinite;
+    }
+    .name-animation {
+        display: block;
+        animation-name: displayHeadingName;
+        animation-duration: .5s ;
+    }
+    @keyframes gradient {
+        0% {
+            background-position: 0% 50%;
+        }
+        50% {
+            background-position: 100% 50%;
+        }
+        100% {
+            background-position: 0% 50%;
+        }
+    }
+    /*---------------  Animation ----------------- */
+    @keyframes displayHeading {
+        from {
+            opacity: 0;
+            transform: translateX(-100%);
+            scale: 50%;
+        }
+        to {
+            opacity: 1;
+            transform: translateX(0%);
+            scale: 100%;
+        }
+    }
+    @keyframes displayHeadingName {
+        from {
+            opacity: 0;
+            transform: translateX(200%);
+        }
+        to {
+            opacity: 1;
+            transform: translateX(0%);
+        }
+    }
+    @keyframes scroll {
+        from {
+            opacity: 1;
+            transform: translateX(0%);
+            scale: 1;
+        }
+        to {
+            opacity: 1;
+            transform: translateX(200%);
+            scale: 100%;
+        }
+    }
+    /*-------------- Resonsive Design -------------------*/
+    @media only screen and (min-width: 768px) {
+        .heading-global {
+            font-size: 5.2rem;
+        }
+        .name {
+            font-size: 12rem;
+        }
+    }
+    @media only screen and (min-width: 1024px) {
+
+        .heading-global {
+            font-size: 7.2rem;
+        }
+        .name {
+            font-size: 15rem;
+        }
+    }
+</style>
