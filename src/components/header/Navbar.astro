@@ -1,97 +1,127 @@
 ---
+import LogoIcon from "./LogoIcon.astro";
 const blue = "#0085ff";
 const blueDown = "#69b4ff";
 const black = "#060606";
+const grey = "#313d44";
 ---
-<div class="contenedor navigation">
+<div class="navbar">
     <a href="#" class="logo">
-        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-align-box-left-top-filled" width="44" height="44" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
-            <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
-            <path d="M18.333 2c1.96 0 3.56 1.537 3.662 3.472l.005 .195v12.666c0 1.96 -1.537 3.56 -3.472 3.662l-.195 .005h-12.666a3.667 3.667 0 0 1 -3.662 -3.472l-.005 -.195v-12.666c0 -1.96 1.537 -3.56 3.472 -3.662l.195 -.005h12.666zm-10.333 9h-2l-.117 .007a1 1 0 0 0 .117 1.993h2l.117 -.007a1 1 0 0 0 -.117 -1.993zm4 -3h-6l-.117 .007a1 1 0 0 0 .117 1.993h6l.117 -.007a1 1 0 0 0 -.117 -1.993zm-2 -3h-4l-.117 .007a1 1 0 0 0 .117 1.993h4l.117 -.007a1 1 0 0 0 -.117 -1.993z" stroke-width="0" fill="currentColor" />
-        </svg>
-        <span class="__name">
-            Juan Torres
-        </span>
-    </a> <!--logo -->
-    <nav>
-        <ul>
-            <a href="#about">
-                <li>About Me</li>
-            </a>
-            <a href="#projects">
-                <li>Personal Projects</li>
-            </a>
-            <a href="#contact">
-                <li>Contact</li>
-            </a>
-        </ul>
-    </nav>
-    <button>CV</button> 
+        <LogoIcon />
+    </a>
+    <div class="nav">
+        <div class="nav__icon">
+            <svg data-button class="svg" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 9h16.5m-16.5 6.75h16.5" />
+            </svg>
+            
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
+            </svg>
+              
+        </div>
+
+        <div data-nav-contain class="nav__contain hidden">
+            <nav>
+                <ul class="nav-items">
+                    <li>
+                        <a href="#home">Home</a>
+                    </li>
+                    <li>
+                        <a href="#about">About Me</a>
+                    </li>
+                    <li>
+                        <a href="#projects">Personal Projects</a>
+                    </li>
+                    <li>
+                        <a href="#contact">Contact</a>
+                    </li>
+                </ul>
+            </nav>
+            <button>CV</button> 
+        </div>
+    </div>
 </div>
 
-<style define:vars={{blue, blueDown, black}}>
-    .navigation {
+<script>
+    const buttonMenu: object | null = document.querySelector("[data-button]");
+    let menu: object | null = document.querySelector("[data-nav-contain]");
+
+    const displayMenu = () => {
+        menu.classList.toggle("hidden");
+    };
+
+    buttonMenu.addEventListener("click", displayMenu )
+</script>
+
+<style define:vars={{blue, blueDown, black, grey}}>
+    .navbar {
         max-width: 120rem;
-        margin-inline: auto;
-        display: flex;
-        flex-direction: column;
-        justify-content: space-between;
-        align-items: center;
-        color: white;
-        background-color: rgba(182, 204, 216, 0);
-        font-size: 1.8rem;
+        width: 95%;
         padding-block: 3.2rem;
+
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        color: white;
+        font-size: 1.8rem;
         position: fixed;
         top: 0;
         border-radius: 1rem;
-        animation: scroll-nav auto linear;
-        animation-timeline: scroll(root block);
-        
+        z-index: 2;
 
-        & .logo {
-            font-size: 4rem;
-            color: var(--blue);
-            display: flex;
-            align-items: center;
-
-            & .__name {
-                font-size: 1.6rem;
-                color: white;
-                margin-left: 1rem;
-                transition: color .3s;
-            }
-        }
+        /* animation: scroll-nav auto linear;
+        animation-timeline: scroll(root block); */
     }
-    .navigation ul {
+    .nav {
+        display: flex;
+        flex-direction: column;
+    }
+    .nav__contain {
+        margin-top: 2rem;
+        padding: 2rem;
+        background-color: var(--grey);
+        border-radius: 1rem;
+    }
+    .hidden {
+        margin-left: 300%;
+    }
+    .nav-items {
         padding: 0;
         display: flex;
-        flex-direction: row;
+        flex-direction: column;
         align-items: center;
         gap: 3rem;
-        margin-top: 3rem;
-        text-align: center;
+        margin-left: ;
 
         & li {
+            display: block;
             list-style: none;
             transition-property: color;
             transition-duration: .2s;
         }
     }
-    .navigation ul li:hover {
+    .navbar ul li:hover {
         cursor: pointer;
         color: var(--blue);
     }
-    nav {
-        display: flex;
-        align-items: center;
+    .svg {
+        max-width: 5rem;
+        display: block;
+        margin-left: 60%;
+    }
+    .nav__icon {
+        /* max-width: 100%; */
     }
     button {
-        display: none;
+        display: block;
+        width: 100%;
         color: white;
         cursor: pointer;
         font-size: 1.6rem;
+        margin-top: 3rem;
         padding-block: 1rem;
-        padding-inline: 3rem;
+        padding-inline: 1rem;
         border: none;
         border-radius: .4rem;
         background-color: var(--blue);
@@ -112,7 +142,7 @@ const black = "#060606";
     }
     /*--------------- Responsive Design ----------------*/
     @media only screen and (min-width: 768px) {
-        .navigation {
+        .navbar {
             display: flex;
             flex-direction: row;
             justify-content: space-between;
@@ -125,8 +155,10 @@ const black = "#060606";
         }
         button {
             display: block;
+            padding-block: 1rem;
+            padding-inline: 3rem;
         }
-        .navigation ul {
+        .navbar ul {
             padding: 0;
             display: flex;
             flex-direction: row;

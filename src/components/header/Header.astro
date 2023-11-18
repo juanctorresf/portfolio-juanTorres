@@ -5,7 +5,7 @@ import Navbar from "./Navbar.astro";
 
 const black = "#060606";
 ---
-<header>
+<header id="home">
     <div class="contenedor">
         <HeaderContain />
     </div>
@@ -18,6 +18,7 @@ const black = "#060606";
         background-image:linear-gradient(to top, rgba(6,6,6,1),rgba(6,6,6,0.8) ), url("../../../public/espectro640x427.jpg");
         background-repeat: no-repeat;
         background-size: cover;
+        overflow: hidden;
     }
     
     @media only screen and (min-width: 1024px) {

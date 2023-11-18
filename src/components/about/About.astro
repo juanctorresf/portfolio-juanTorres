@@ -1,11 +1,13 @@
 ---
 const black = "#060606";
+const aboutContain = await Astro.glob("../../content/about/about.md")
+const { title , description } = aboutContain[0].frontmatter;
 ---
 <section id="about">
     <div class="contain contenedor">
-        <h1 class="heading">About Me</h1>
+        <h1 class="heading">{ title }</h1>
         <p class="description">
-            I am an enthusiastic front-end developer seeking my first professional opportunity to apply and further expand my technical skills. Although I have no formal labor in the tech field, I have gained a solid knowledge of key front-end development technologies through my independent learning and personal projects.
+            { description }
         </p>
     </div>
 </section>
