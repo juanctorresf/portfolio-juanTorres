@@ -5,8 +5,8 @@ import Navbar from "./Navbar.astro";
 
 <div class="contain">
     <Navbar/>
-    <div class="animation-scrol">
-        <h1 class="heading-global">
+    <div class="animation-scroll">
+        <h1 class="heading">
             Hello there, I'm
                 <span class="name-animation"><span class="name">Juan Torres</span></span>
             a Frontend Developer
@@ -21,14 +21,14 @@ import Navbar from "./Navbar.astro";
         margin: 0 auto;
         height: 100vh;
     }
-    .heading-global {
+    .heading {
         color: white;
         line-height: 1.2;
         font-size: 3rem;
         animation-name: displayHeading;
         animation-duration: .5s;
     }
-    .animation-scrol {
+    .animation-scroll {
         animation-name: scroll;
         animation-duration: 1s;
         animation-direction: alternate;
@@ -98,7 +98,7 @@ import Navbar from "./Navbar.astro";
     }
     /*-------------- Resonsive Design -------------------*/
     @media only screen and (min-width: 768px) {
-        .heading-global {
+        .heading {
             font-size: 5.2rem;
         }
         .name {
@@ -107,7 +107,7 @@ import Navbar from "./Navbar.astro";
     }
     @media only screen and (min-width: 1024px) {
 
-        .heading-global {
+        .heading {
             font-size: 7.2rem;
         }
         .name {

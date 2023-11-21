@@ -1,5 +1,6 @@
 ---
 import LogoIcon from "./LogoIcon.astro";
+
 const blue = "#0085ff";
 const blueDown = "#69b4ff";
 const black = "#060606";
@@ -11,11 +12,11 @@ const grey = "#313d44";
     </a>
     <div class="nav">
         <div class="nav__icon">
-            <svg data-button class="svg" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+            <svg button-menu-open class="nav__icon--svg" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
                 <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 9h16.5m-16.5 6.75h16.5" />
             </svg>
             
-            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+            <svg button-menu-close class="nav__icon--svg hidden" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
                 <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
             </svg>
               
@@ -44,17 +45,26 @@ const grey = "#313d44";
 </div>
 
 <script>
-    const buttonMenu: object | null = document.querySelector("[data-button]");
+    const buttonMenu: object | null = document.querySelector("[button-menu-open]");
+    const buttonMenuClose: object | null = document.querySelector("[button-menu-close]");
     let menu: object | null = document.querySelector("[data-nav-contain]");
 
     const displayMenu = () => {
         menu.classList.toggle("hidden");
+        buttonMenuClose.classList.toggle("hidden");
+        buttonMenu.classList.toggle("hidden");
     };
+    const closeMenu = () => {
+        menu.classList.toggle("hidden");
+        buttonMenu.classList.toggle("hidden");
+        buttonMenuClose.classList.toggle("hidden");
+    }
 
     buttonMenu.addEventListener("click", displayMenu )
+    buttonMenuClose.addEventListener("click", closeMenu )
 </script>
 
-<style define:vars={{blue, blueDown, black, grey}}>
+<style lang="scss" define:vars={{blue, blueDown, black, grey}}>
     .navbar {
         max-width: 120rem;
         width: 95%;
@@ -76,12 +86,19 @@ const grey = "#313d44";
     .nav {
         display: flex;
         flex-direction: column;
-    }
-    .nav__contain {
-        margin-top: 2rem;
-        padding: 2rem;
-        background-color: var(--grey);
-        border-radius: 1rem;
+        
+        &__contain {
+            margin-top: 2rem;
+            padding: 2rem;
+            background-color: var(--grey);
+            border-radius: 1rem;
+        }
+
+        &__icon--svg {
+            max-width: 5rem;
+            display: block;
+            margin-left: 60%;
+        }
     }
     .hidden {
         margin-left: 300%;
@@ -92,7 +109,6 @@ const grey = "#313d44";
         flex-direction: column;
         align-items: center;
         gap: 3rem;
-        margin-left: ;
 
         & li {
             display: block;
@@ -105,14 +121,7 @@ const grey = "#313d44";
         cursor: pointer;
         color: var(--blue);
     }
-    .svg {
-        max-width: 5rem;
-        display: block;
-        margin-left: 60%;
-    }
-    .nav__icon {
-        /* max-width: 100%; */
-    }
+
     button {
         display: block;
         width: 100%;
@@ -126,10 +135,11 @@ const grey = "#313d44";
         border-radius: .4rem;
         background-color: var(--blue);
         transition: background-color .3s;
-    }
-    button:hover {
-        color: var(--blue);
-        background-color: white;
+
+        &:hover {
+            color: var(--blue);
+            background-color: white;
+        }
     }
     /*--------------- Animation ---------------------*/
     @keyframes scroll-nav {
