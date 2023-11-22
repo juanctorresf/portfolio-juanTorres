@@ -1,13 +1,20 @@
 ---
 import LogoIcon from "./LogoIcon.astro";
 
+const navItems = [
+    { title: "Home", href: "#home" },
+    { title: "About Me", href: "#about" },
+    { title: "Projects", href: "#projects" },
+    { title: "Contact", href: "#contact" },
+];
+
 const blue = "#0085ff";
 const blueDown = "#69b4ff";
 const black = "#060606";
 const grey = "#313d44";
 ---
 <div class="navbar">
-    <a href="#" class="logo">
+    <a href="#" class="navbar__logo">
         <LogoIcon />
     </a>
     <div class="nav">
@@ -25,29 +32,25 @@ const grey = "#313d44";
         <div data-nav-contain class="nav__contain hidden">
             <nav>
                 <ul class="nav-items">
-                    <li>
-                        <a href="#home">Home</a>
-                    </li>
-                    <li>
-                        <a href="#about">About Me</a>
-                    </li>
-                    <li>
-                        <a href="#projects">Personal Projects</a>
-                    </li>
-                    <li>
-                        <a href="#contact">Contact</a>
-                    </li>
+                    {
+                        navItems.map( item => (
+                            <li>
+                                <a class="nav-item" href={item.href}>{item.title}</a>
+                            </li>
+                        ))
+                    }
                 </ul>
             </nav>
-            <button>CV</button> 
+            <button>Download CV</button>
         </div>
     </div>
 </div>
 
 <script>
-    const buttonMenu: object | null = document.querySelector("[button-menu-open]");
-    const buttonMenuClose: object | null = document.querySelector("[button-menu-close]");
-    let menu: object | null = document.querySelector("[data-nav-contain]");
+    const buttonMenu= document.querySelector("[button-menu-open]") as HTMLSelectElement;
+    const buttonMenuClose = document.querySelector("[button-menu-close]") as HTMLSelectElement;
+    const menu = document.querySelector("[data-nav-contain]") as HTMLSelectElement;
+    const links = document.querySelectorAll('.nav-item');
 
     const displayMenu = () => {
         menu.classList.toggle("hidden");
@@ -62,13 +65,16 @@ const grey = "#313d44";
 
     buttonMenu.addEventListener("click", displayMenu )
     buttonMenuClose.addEventListener("click", closeMenu )
+    links.forEach( link => {
+        link.addEventListener("click", closeMenu);
+    })
 </script>
 
 <style lang="scss" define:vars={{blue, blueDown, black, grey}}>
     .navbar {
         max-width: 120rem;
         width: 95%;
-        padding-block: 3.2rem;
+        padding-top: 2rem;
 
         display: flex;
         flex-direction: row;
@@ -80,8 +86,26 @@ const grey = "#313d44";
         border-radius: 1rem;
         z-index: 2;
 
-        /* animation: scroll-nav auto linear;
-        animation-timeline: scroll(root block); */
+        &::after {
+            content: '';
+            position: absolute;
+            width: 100%;
+            height: 5rem;
+            z-index: -1;
+            top: 2rem;
+            left: 0;
+            border-radius: 1.2rem;
+
+            animation: scroll-nav linear both;
+            animation-timeline: scroll(root block); 
+            animation-range: 0 200px;
+        }
+
+        &__logo {
+            display: flex;
+            align-items: center;
+            height: 5rem;
+        }
     }
     .nav {
         display: flex;
@@ -90,14 +114,18 @@ const grey = "#313d44";
         &__contain {
             margin-top: 2rem;
             padding: 2rem;
-            background-color: var(--grey);
+            padding-inline: 3rem;
+            width: 50dvw;
+            text-align: center;
+            background-color: rgba(49, 61, 68, 0.5);
+            backdrop-filter: blur(4px);
             border-radius: 1rem;
         }
 
         &__icon--svg {
             max-width: 5rem;
             display: block;
-            margin-left: 60%;
+            margin-left: 70%;
         }
     }
     .hidden {
@@ -147,26 +175,70 @@ const grey = "#313d44";
             background-color: rgba(182, 204, 216, 0);
         }
         to {
-            background-color: rgba(182, 204, 216, 0.2);
+            background-color: rgba(6, 6, 6, 0.5);
+            backdrop-filter: blur(1.5rem);
         }
     }
     /*--------------- Responsive Design ----------------*/
     @media only screen and (min-width: 768px) {
+        .nav {
+
+            &__contain {
+                width: 30dvw;
+            }
+        }
+    }
+
+    @media only screen and (min-width: 1028px) {
         .navbar {
             display: flex;
             flex-direction: row;
-            justify-content: space-between;
             align-items: center;
+            justify-content: space-between;
             color: white;
             font-size: 1.8rem;
-            padding-block: 3.2rem;
+            padding-block: 2rem;
+
             position: fixed;
             top: 0%;
+
+            &::after {
+                content: '';
+                position: absolute;
+                width: 98%;
+                height: 5rem;
+                z-index: -1;
+                top: 3.4rem;
+                left: 0;
+                border-radius: 1.2rem;
+
+                animation: scroll-nav linear both;
+                animation-timeline: scroll(root block); 
+                animation-range: 0 500px;
+            }
+        }
+        .nav {
+            flex-direction: row;
+
+            &__contain {
+                display: flex;
+                flex-direction: row;
+                justify-content: space-between;
+                align-items: center;
+                gap: 2rem;
+                margin: 0;
+                background-color: transparent;
+                width: 80rem;
+
+                backdrop-filter: blur(0);
+            }
         }
         button {
             display: block;
+            max-width: 15rem;
             padding-block: 1rem;
-            padding-inline: 3rem;
+            padding-inline: 2rem;
+            margin: 0;
         }
         .navbar ul {
             padding: 0;
