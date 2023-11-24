@@ -1,0 +1,105 @@
+---
+interface Props {
+    title: string;
+    description: string;
+    tools: string[]
+    image: string
+    link: string
+}
+const { title, description, tools, image, link } = Astro.props;
+
+const black: string = "rgba(6, 6, 6, 0.5)";
+const blue: string = "#0085ff";
+---
+
+<div class="card">
+    <div class="card__image">
+        <img class="card__image--img" src={image} alt="Netflix">
+    </div>
+
+    <div class="card__heading">
+        <h1 class="card__title">{ title }</h1>
+        <a class="card__link" href={link} target="_blank">Visit Web</a>
+    </div>
+
+    <p class="card__description">{ description }</p>
+    <br>
+    <ul class="tools">
+        {
+            tools.map( tool => (
+                <li class="tools__item">{tool}</li>
+            ))
+        }
+    </ul>
+</div>
+
+<style lang="scss" define:vars={{ black, blue }}>
+    .card {
+        max-width: 100%;
+        margin: 0 auto;
+        margin-bottom: 3rem;
+        background-color: var(--black);
+        backdrop-filter: blur(.6rem);
+        border-radius: 0.8rem;
+        padding: 1.6rem;
+        padding-bottom: 3rem;
+        min-height: 56rem;
+        scroll-snap-align: center;
+        // filter: grayscale(1);
+
+        &:hover {
+            filter: grayscale(0);
+        }
+
+        &__image {
+            border-radius: 1rem;
+            aspect-ratio: 4 / 3;
+
+        }
+        &__image--img {
+            height: 100%;
+            object-fit: cover;
+            border-radius: .5rem;
+        }
+        &__heading {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-end;
+            margin-top: 2rem;
+        }
+        &__title {
+            color: white;
+            text-align: left;
+            font-size: 2.4rem;
+        }
+        &__link {
+            color: white;
+            font-size: 1.6rem;
+            text-decoration: underline;
+        }
+        &__description {
+            color: white;
+            font-size: 1.6rem;
+        }
+    }
+
+    .tools {
+        display: flex;
+        gap: 4rem;
+        flex-wrap: wrap;
+        padding: 0;
+
+        &__item {
+            color: white;
+            font-size: 1.6rem;
+            list-style: none;
+            line-height: 0.5;
+            transition: color .2s ease-in-out;
+            
+            &:hover {
+                cursor: default;
+                color: var(--blue);
+            }
+        }
+    }
+</style>
