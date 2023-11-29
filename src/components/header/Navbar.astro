@@ -47,9 +47,9 @@ const grey = "#313d44";
 </div>
 
 <script>
-    const buttonMenu= document.querySelector("[button-menu-open]") as HTMLSelectElement;
-    const buttonMenuClose = document.querySelector("[button-menu-close]") as HTMLSelectElement;
-    const menu = document.querySelector("[data-nav-contain]") as HTMLSelectElement;
+    const buttonMenu= document.querySelector("[button-menu-open]") as HTMLButtonElement;
+    const buttonMenuClose = document.querySelector("[button-menu-close]") as HTMLButtonElement;
+    const menu = document.querySelector("[data-nav-contain]") as HTMLElement;
     const links = document.querySelectorAll('.nav-item');
 
     const displayMenu = () => {
@@ -180,7 +180,7 @@ const grey = "#313d44";
         }
     }
     /*--------------- Responsive Design ----------------*/
-    @media only screen and (min-width: 768px) {
+    @media screen and (width >= 768px) {
         .nav {
 
             &__contain {
@@ -189,7 +189,7 @@ const grey = "#313d44";
         }
     }
 
-    @media only screen and (min-width: 1028px) {
+    @media only screen and (width >= 1028px) {
         .navbar {
             display: flex;
             flex-direction: row;

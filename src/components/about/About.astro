@@ -1,4 +1,5 @@
 ---
+import AboutLogos from "./AboutLogos.astro";
 interface About {
     title: string
     description: string
@@ -8,6 +9,7 @@ const { title , description  } = aboutContain[0].frontmatter;
 
 const black = "#060606";
 ---
+
 <section id="about">
     <div class="about contenedor">
         <h1 class="about__heading">{ title }</h1>
@@ -16,10 +18,11 @@ const black = "#060606";
                 { description } <br> <br>
                 Here are a few of technologies I've been working:
             </p>
-            <span class="about__skills"></span>
+            <AboutLogos />
         </div>
     </div>
 </section>
+
 <style lang="scss" define:vars={{black}}>
     #about {
         background-color: var(--black);
@@ -43,16 +46,33 @@ const black = "#060606";
             line-height: 1.9;
             margin-bottom: 8rem;
         }   
-        &__skills {
-        }
     }
     /*--------------- Responsive Design ------------*/
-    @media only screen and (min-width: 768px) {
+    @media only screen and (width >= 768px) {
         #about {
             display: flex;
             align-items: center;
             height: 50rem;
         }
+        .about {
+            display: grid;
+            align-items: center;
+            // grid-template-columns: repeat(2, 1fr);
+            // grid-template-rows: none;
+            gap: 2rem;
+
+            &__heading {
+                font-size: 7.2rem;
+                text-transform: uppercase;
+                margin: 0;
+            }
+            &__description {
+                font-size: 2rem;
+                margin-bottom: 0;
+            } 
+        }
+    }
+    @media screen and (width >= 1028px) {
         .about {
             display: grid;
             align-items: center;
