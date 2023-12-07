@@ -18,8 +18,9 @@ const blue: string = "#0085ff";
     </div>
 
     <div class="card__heading">
-        <h1 class="card__title">{ title }</h1>
-        <a class="card__link" href={link} target="_blank">Visit Web</a>
+        <a href={link} target="_blank">
+            <h1 class="card__title">{ title }</h1>
+        </a>
     </div>
 
     <p class="card__description">{ description }</p>
@@ -100,4 +101,20 @@ const blue: string = "#0085ff";
             }
         }
     }
+    /*---------------- Responsive Design ----------------*/
+    @media screen and (width >= 768px ) {
+        .card {
+            max-width: 38rem;
+        }
+    }
+
+    @media screen and (width >= 1028px ) {
+        .card {
+            transition: transform .12s ease-in-out;
+            &:hover {
+                transform: scale(1.05);
+            }
+        }
+    }
+
 </style>
