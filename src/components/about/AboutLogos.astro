@@ -1,29 +1,20 @@
+---
+import TechLogos from "./TechLogos.astro";
+---
+
 <div class="about__logos">
     <div class="about__logos-slide">
-        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/html5/html5-original.svg" />
-        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/css3/css3-original.svg" />
-        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg" />
-        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg" />
-        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/redux/redux-original.svg" />
-        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/sass/sass-original.svg" />
-        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/firebase/firebase-plain.svg" />
-        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/git/git-original.svg" />
-        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/jest/jest-plain.svg" />
-        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/npm/npm-original-wordmark.svg" />
-        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/html5/html5-original.svg" />
-        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/css3/css3-original.svg" />
-        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg" />
-        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg" />
-        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/redux/redux-original.svg" />
-        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/sass/sass-original.svg" />
-        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/firebase/firebase-plain.svg" />
-        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/git/git-original.svg" />
-        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/jest/jest-plain.svg" />
-        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/npm/npm-original-wordmark.svg" />
+        <TechLogos />
     </div>
 </div>
 
-<style lang="scss">
+<style lang="scss" >
+    :root {
+        --widthLogoMobile: 5rem;
+        --widthLogoDesktop: 7rem;
+        --marginLogoMobile: 4rem;
+        --marginLogoDesktop: 5rem;
+    }
     .about {
         &__logos {
             width: 94svw;
@@ -35,26 +26,23 @@
 
         &__logos-slide {
             display: flex;
-            width: calc(5rem*20);
+            width: calc(var(--widthLogoMobile)*20);
             animation: 12s slide linear infinite;
 
             &:hover {
                 animation-play-state: paused;
             }
         }
-        &__logos-slide img {
-            display: inline-block;
-            width: 5rem;
-            margin-right: 4rem;
-        }
+    }
 
-        @keyframes slide {
-            from {
-                transform: translateX(0);
-            }
-            to {
-                transform: translateX(calc(-9rem*10));
-            }
+    
+    /*------------- Animations --------------*/
+    @keyframes slide {
+        from {
+            transform: translateX(0);
+        }
+        to {
+            transform: translateX(calc( calc( calc( var(--widthLogoMobile) + var(--marginLogoMobile ) ) )* -10 ));
         }
     }
 
@@ -64,6 +52,19 @@
             &__logos {
                 width: 54rem;
             }
+
+            &__logos-slide {
+                width: calc(var(--widthLogoDesktop)*20);
+            }
         }
+        
+        @keyframes slide {
+        from {
+            transform: translateX(0);
+        }
+        to {
+            transform: translateX(calc( calc( calc( var(--widthLogoDesktop) + var(--marginLogoDesktop )) )* -10));
+        }
+    }
     }
 </style>
