@@ -1,8 +1,8 @@
 ---
 title: "Portfolio - Juan Torres"
-description: "Guitar LA is a landing page for a store of selling of guitars. I used following technologies: "
+description: "My portfolio is a project that I developed with Astro js, with Este proyecto fue desarrollado utilizando el framework Astro de JavaScript."
 tools: ["HTML", "CSS", "Astro js", "TypeScript", "SASS"]
-image: "https://i.imgur.com/T0B3g7D.jpg"
+image: "https://i.imgur.com/ud6C5Nz.jpg"
 link: "https://juanctorresf.github.io/guitar-LA/"
-github: "https://github.com/juanctorresf/guitar-LA"
+github: "https://github.com/juanctorresf/portfolio-juanTorres"
 ---
