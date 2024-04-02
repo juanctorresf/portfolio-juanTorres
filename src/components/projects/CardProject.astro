@@ -1,20 +1,28 @@
 ---
+import { Image } from 'astro:assets';
+
 interface Props {
     title: string;
     description: string;
     tools: string[]
     image: string
+    alt: string
     link: string
 }
-const { title, description, tools, image, link } = Astro.props;
+const { title, description, tools, image, link, alt } = Astro.props;
 
 const black: string = "rgba(6, 6, 6, 0.5)";
-const blue: string = "#0085ff";
+const bluePro: string = "#0085ff";
 ---
 
 <div class="card">
     <div class="card__image">
-        <img class="card__image--img" src={image} alt="Netflix">
+        <img
+            class="card__image--img" 
+            src={ image } 
+            loading="lazy"
+            decoding="async"
+            alt={alt} />
     </div>
 
     <div class="card__heading">
@@ -34,7 +42,7 @@ const blue: string = "#0085ff";
     </ul>
 </div>
 
-<style lang="scss" define:vars={{ black, blue }}>
+<style lang="scss" define:vars={{ black, bluePro }}>
     .card {
         max-width: 94vw ;
         margin: 0 auto;
@@ -47,7 +55,7 @@ const blue: string = "#0085ff";
         scroll-snap-align: center;
 
         &:hover {
-            filter: grayscale(0);
+            // backdrop-filter: blur(.2rem);
         }
 
         &__image {
@@ -70,6 +78,12 @@ const blue: string = "#0085ff";
             color: white;
             text-align: left;
             font-size: 2.4rem;
+            
+            &:hover {
+                color: var(--bluePro);
+                position: relative;
+                z-index: 100;
+            }
         }
         &__link {
             color: white;
@@ -97,7 +111,6 @@ const blue: string = "#0085ff";
             
             &:hover {
                 cursor: default;
-                color: var(--blue);
             }
         }
     }
