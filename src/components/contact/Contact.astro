@@ -1,11 +1,39 @@
 ---
-
+const greenBlack: string = "rgba(35, 54, 52, 0.5)";
 ---
 <section id="contact">
     <h1 class="heading">Contact</h1>
+    <p class="description">Ways to contact me:</p>
+    <div class="links">
+        <a 
+            href="mailto:jtorres.devv@gmail.com" 
+            target="_blank"
+            class="links__link"
+        >
+            Email
+        </a>
+        <a 
+            href="https://www.linkedin.com/in/juan-torres-devv/" 
+            target="_blank"
+            class="links__link" 
+        >
+            LinkedIn
+        </a>
+        <a 
+            href="https://github.com/juanctorresf" 
+            target="_blank"
+            class="links__link"
+        >
+            GitHub
+        </a>
+    </div>
+
 </section>
 
-<style lang="scss">
+<style lang="scss" define:vars={{ greenBlack }}>
+    section {
+        margin-block: 5rem;
+    }
     .heading {
         font-size: 4rem;
         text-transform: uppercase;
@@ -13,6 +41,29 @@
         text-align: center;
     }
 
+    .description {
+        color: white;
+        font-size: 1.8rem;
+        text-align: center;
+    }
+    .links {
+        margin-top: 5rem;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        color: white;
+
+        &__link {
+            width: 10rem;
+            font-size: 1.6rem;
+            text-align: center;
+            background-color: var(--greenBlack);
+            backdrop-filter: blur(10px);
+            margin-bottom: 2rem;
+            padding: 1rem 1.5rem;
+            border-radius: .5rem;
+        }
+    }
     // Responsive Design
     @media screen and (width >= 768px) {
         .heading {

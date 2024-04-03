@@ -1,0 +1,20 @@
+---
+const bluePro: string = "#0085ff";
+---
+<p>
+    Made by 
+    <a href="https://www.linkedin.com/in/juan-torres-devv/" target="_blank">Juan Torres</a> 
+    with Astro
+</p>
+
+<style define:vars={{ bluePro }}>
+    p {
+        color: white;
+        text-align: center;
+        font-size: 1.6rem;
+    }
+    a {
+        display: inline-block;
+        color: var(--bluePro);
+    }
+</style>
