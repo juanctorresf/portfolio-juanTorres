@@ -54,7 +54,7 @@ const greenBlack: string = "rgba(35, 54, 52, 0.5)";
         color: white;
 
         &__link {
-            width: 10rem;
+            width: 90%;
             font-size: 1.6rem;
             text-align: center;
             background-color: var(--greenBlack);
@@ -70,10 +70,35 @@ const greenBlack: string = "rgba(35, 54, 52, 0.5)";
             font-size: 7.2rem;
             margin-bottom: 3rem;
         }
+
+        .links {
+
+            &__link {
+                width: 50rem;
+            }
+        }
     }
     @media screen and (width >= 1028px) {
         .heading {
             margin-top: 4rem;
+        }
+
+        .links {
+            flex-direction: row;
+            column-gap: 3rem;
+            justify-content: center;
+            margin-top: 2rem;
+
+            &__link {
+                width: 30rem;
+                transition-property: background-color;
+                transition-duration: .2s;
+
+                &:hover {
+                    background-color: #0085FF;
+                }
+            }
+            
         }
     }
 </style>
