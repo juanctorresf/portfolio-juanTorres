@@ -3,29 +3,31 @@ const greenBlack: string = "rgba(35, 54, 52, 0.5)";
 ---
 <section id="contact">
     <h1 class="heading">Contact</h1>
-    <p class="description">Ways to contact me:</p>
-    <div class="links">
-        <a 
-            href="mailto:jtorres.devv@gmail.com" 
-            target="_blank"
-            class="links__link"
-        >
-            Email
-        </a>
-        <a 
-            href="https://www.linkedin.com/in/juan-torres-devv/" 
-            target="_blank"
-            class="links__link" 
-        >
-            LinkedIn
-        </a>
-        <a 
-            href="https://github.com/juanctorresf" 
-            target="_blank"
-            class="links__link"
-        >
-            GitHub
-        </a>
+    <div class="heading__description">
+        <p class="description">Ways to contact me:</p>
+        <div class="links">
+            <a 
+                href="mailto:jtorres.devv@gmail.com" 
+                target="_blank"
+                class="links__link"
+            >
+                Email
+            </a>
+            <a 
+                href="https://www.linkedin.com/in/juan-torres-devv/" 
+                target="_blank"
+                class="links__link" 
+            >
+                LinkedIn
+            </a>
+            <a 
+                href="https://github.com/juanctorresf" 
+                target="_blank"
+                class="links__link"
+            >
+                GitHub
+            </a>
+        </div>
     </div>
 
 </section>
@@ -80,7 +82,12 @@ const greenBlack: string = "rgba(35, 54, 52, 0.5)";
     }
     @media screen and (width >= 1028px) {
         .heading {
-            margin-top: 4rem;
+            margin-top: 10rem;
+
+            &__description {
+                padding-top: 15rem;
+                padding-bottom: 20rem;
+            }
         }
 
         .links {
