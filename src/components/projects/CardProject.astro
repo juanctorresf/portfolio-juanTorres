@@ -1,15 +1,18 @@
 ---
 import { Image } from 'astro:assets';
+import iconGitHub from "../../images/githubIcon.svg";
+import iconLink from "../../images/linkIcon.svg";
 
 interface Props {
     title: string;
     description: string;
-    tools: string[]
-    image: string
-    alt: string
-    link: string
+    tools: string[];
+    image: string;
+    alt: string;
+    link: string;
+    github: string;
 }
-const { title, description, tools, image, link, alt } = Astro.props;
+const { title, description, tools, image, link, alt, github } = Astro.props;
 
 const black: string = "rgba(6, 6, 6, 0.5)";
 const bluePro: string = "#0085ff";
@@ -17,18 +20,30 @@ const bluePro: string = "#0085ff";
 
 <div class="card">
     <div class="card__image">
-        <img
-            class="card__image--img" 
-            src={ image } 
+        <Image
+            class="card__image--img"
             loading="lazy"
-            decoding="async"
-            alt={alt} />
+            src={ image } 
+            alt={ alt } 
+            inferSize
+        />
     </div>
-
+    
     <div class="card__heading">
-        <a href={link} target="_blank">
             <h1 class="card__title">{ title }</h1>
-        </a>
+
+            <div class="icons">
+                <div class="icon">
+                    <a href={github} target="_blank">
+                        <Image src={iconGitHub} alt="github icon" loading="lazy" width="25" height="25"/>
+                    </a>
+                </div>
+                <div class="icon">
+                    <a href={link} target="_blank">
+                        <Image src={iconLink} alt="link icon" loading="lazy" width="25" height="25"/>
+                    </a>
+                </div>
+            </div>
     </div>
 
     <p class="card__description">{ description }</p>
@@ -54,10 +69,6 @@ const bluePro: string = "#0085ff";
         padding-bottom: 3rem;
         scroll-snap-align: center;
 
-        &:hover {
-            // backdrop-filter: blur(.2rem);
-        }
-
         &__image {
             border-radius: 1rem;
             aspect-ratio: 4 / 3;
@@ -71,19 +82,13 @@ const bluePro: string = "#0085ff";
         &__heading {
             display: flex;
             justify-content: space-between;
-            align-items: flex-end;
+            align-items: center;
             margin-top: 2rem;
         }
         &__title {
             color: white;
             text-align: left;
             font-size: 2.4rem;
-            
-            &:hover {
-                color: var(--bluePro);
-                position: relative;
-                z-index: 100;
-            }
         }
         &__link {
             color: white;
@@ -94,6 +99,11 @@ const bluePro: string = "#0085ff";
             color: white;
             font-size: 1.6rem;
         }
+    }
+
+    .icons {
+        display: flex;
+        column-gap: 1rem;
     }
 
     .tools {
@@ -124,8 +134,11 @@ const bluePro: string = "#0085ff";
     @media screen and (width >= 1028px ) {
         .card {
             transition: transform .12s ease-in-out;
+            transition: border .08s ease-in-out;
+
             &:hover {
                 transform: scale(1.05);
+                border: 2px solid white;
             }
         }
     }
