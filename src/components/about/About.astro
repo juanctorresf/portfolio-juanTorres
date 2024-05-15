@@ -5,7 +5,7 @@ interface About {
     description: string
 }
 const aboutContain = await Astro.glob<About>("../../content/about/about.md")
-const { title , description  } = aboutContain[0].frontmatter;
+const { title, description } = aboutContain[0].frontmatter;
 
 const black = "#060606";
 ---
@@ -16,7 +16,6 @@ const black = "#060606";
         <div class="about__description">
             <p>
                 { description } <br> <br>
-                Here are a few of technologies I've been working:
             </p>
             <AboutLogos />
         </div>
@@ -45,6 +44,10 @@ const black = "#060606";
             font-size: 1.8rem;
             line-height: 1.9;
             margin-bottom: 8rem;
+
+            p {
+                margin-bottom: 0;
+            }
         }   
     }
     /*--------------- Responsive Design ------------*/
@@ -57,8 +60,6 @@ const black = "#060606";
         .about {
             display: grid;
             align-items: center;
-            // grid-template-columns: repeat(2, 1fr);
-            // grid-template-rows: none;
             gap: 2rem;
 
             &__heading {
