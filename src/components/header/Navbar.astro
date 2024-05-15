@@ -17,53 +17,51 @@ const grey = "#313d44";
     <a href="#home" class="navbar__logo">
         <LogoIcon />
     </a>
-    <div class="nav">
-        <div class="nav__icon">
-            <svg button-menu-open class="nav__icon--svg" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
-                <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 9h16.5m-16.5 6.75h16.5" />
-            </svg>
-            
-            <svg button-menu-close class="nav__icon--svg hidden" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
-                <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
-            </svg>
-        </div>
+    <div class="navbar__iconMenu">
+        <svg  class="iconOpen" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 9h16.5m-16.5 6.75h16.5" />
+        </svg>
+        
+        <svg  class="iconClose hidden" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
+        </svg>
+    </div>
 
-        <div data-nav-contain class="nav__contain hidden">
-            <nav>
-                <ul class="nav-items">
-                    {
-                        navItems.map( item => (
-                            <li>
-                                <a class="nav-item" href={item.href}>{item.title}</a>
-                            </li>
-                        ))
-                    }
-                </ul>
-            </nav>
-            <button>CV</button>
-        </div>
+    <div data-nav-contain class="nav-menu hidden">
+        <nav>
+            <ul class="nav-items">
+                {
+                    navItems.map( item => (
+                        <li>
+                            <a class="nav-item" href={item.href}>{item.title}</a>
+                        </li>
+                    ))
+                }
+            </ul>
+        </nav>
+        <button>CV</button>
     </div>
 </div>
 
 <script>
-    const buttonMenu= document.querySelector("[button-menu-open]") as HTMLButtonElement;
-    const buttonMenuClose = document.querySelector("[button-menu-close]") as HTMLButtonElement;
+    const buttonOpenMenu= document.querySelector(".iconOpen") as HTMLButtonElement;
+    const buttonCloseMenu = document.querySelector(".iconClose") as HTMLButtonElement;
     const menu = document.querySelector("[data-nav-contain]") as HTMLElement;
     const links = document.querySelectorAll('.nav-item');
 
     const displayMenu = () => {
-        menu.classList.toggle("hidden");
-        buttonMenuClose.classList.toggle("hidden");
-        buttonMenu.classList.toggle("hidden");
+        buttonCloseMenu.classList.toggle("hidden");
+        buttonOpenMenu.classList.toggle("hidden");
+        menu.classList.toggle("hidden")
     };
     const closeMenu = () => {
-        menu.classList.toggle("hidden");
-        buttonMenu.classList.toggle("hidden");
-        buttonMenuClose.classList.toggle("hidden");
+        buttonCloseMenu.classList.toggle("hidden")
+        buttonOpenMenu.classList.toggle("hidden")
+        menu.classList.toggle("hidden")
     }
 
-    buttonMenu.addEventListener("click", displayMenu )
-    buttonMenuClose.addEventListener("click", closeMenu )
+    buttonOpenMenu.addEventListener("click", displayMenu )
+    buttonCloseMenu.addEventListener("click", closeMenu )
     links.forEach( link => {
         link.addEventListener("click", closeMenu);
     })
@@ -74,7 +72,6 @@ const grey = "#313d44";
         max-width: 120rem;
         width: 95%;
         padding-top: 2rem;
-
         display: flex;
         flex-direction: row;
         justify-content: space-between;
@@ -105,30 +102,28 @@ const grey = "#313d44";
             align-items: center;
             height: 5rem;
         }
-    }
-    .nav {
-        display: flex;
-        flex-direction: column;
-        
-        &__contain {
-            margin-top: 2rem;
-            padding: 2rem;
-            padding-inline: 3rem;
-            width: 50dvw;
-            text-align: center;
-            background-color: rgba(49, 61, 68, 0.5);
-            backdrop-filter: blur(4px);
-            border-radius: 1rem;
-        }
 
-        &__icon--svg {
-            max-width: 5rem;
-            display: block;
-            margin-left: 70%;
+        &__iconMenu {
+            display: flex;
+            flex-direction: column;
+            width: 5rem;
         }
+    }
+    .nav-menu {
+        position: absolute;
+        top: 100%;
+        margin-top: 2rem;
+        padding: 2rem 3rem;
+        width: 100%;
+        text-align: center;
+        background-color: rgba(49, 61, 68, 0.5);
+        backdrop-filter: blur(4px);
+        border-radius: 1rem;
     }
     .hidden {
-        margin-left: 300%;
+        position: absolute;
+        top: -600%;
+        display: none;
     }
     .nav-items {
         padding: 0;
@@ -207,7 +202,7 @@ const grey = "#313d44";
                 width: 98%;
                 height: 5rem;
                 z-index: -1;
-                top: 3.4rem;
+                top: 23%;
                 left: 0;
                 border-radius: 1.2rem;
 
@@ -215,6 +210,10 @@ const grey = "#313d44";
                 animation-timeline: scroll(root block); 
                 animation-range: 0 500px;
             }
+
+            &__iconMenu {
+            display: none;
+        }
         }
         .nav {
             flex-direction: row;
@@ -231,6 +230,19 @@ const grey = "#313d44";
 
                 backdrop-filter: blur(0);
             }
+        }
+
+        .nav-menu {
+            display: flex;
+            flex-direction: row;
+            justify-content: space-between;
+            align-items: center;
+            backdrop-filter: none;
+            background-color: transparent;
+            position: absolute;
+            max-width: 68%;
+            top: -16%;
+            margin-left: 32%;
         }
         button {
             display: block;

@@ -1,6 +1,6 @@
 ---
 title: "Piano Scale"
-description: "This is an aplication developed with React js that allows you to keep a personalized journal."
+description: "This app allows you to explore and visualize different musical scales on the piano."
 tools: ["React", "Zustand", "Tailwind CSS"]
 image: "https://i.imgur.com/ZFFNT7C.png"
 alt: "Image of Piano Scale App"
