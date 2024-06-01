@@ -15,10 +15,12 @@ const black = "#060606";
         <h1 class="about__heading">{ title }</h1>
         <div class="about__description">
             <p>
-                { description } <br> <br>
+                { description }
             </p>
-            <AboutLogos />
         </div>
+    </div>
+    <div class="about-techlogos">
+        <AboutLogos />
     </div>
 </section>
 
@@ -26,6 +28,8 @@ const black = "#060606";
     #about {
         background-color: var(--black);
         height: auto;
+        display: flex;
+        flex-direction: column;
     }
     .about {
         display: flex;
@@ -43,12 +47,16 @@ const black = "#060606";
             color: white;
             font-size: 1.8rem;
             line-height: 1.9;
-            margin-bottom: 8rem;
+            margin-bottom: 2rem;
 
             p {
                 margin-bottom: 0;
             }
         }   
+    }
+    .about-techlogos {
+        max-width: 120rem;
+        width: 94svw;
     }
     /*--------------- Responsive Design ------------*/
     @media (orientation: landscape) {
@@ -62,6 +70,7 @@ const black = "#060606";
             display: flex;
             align-items: center;
             height: 50rem;
+            gap: 2rem;
         }
         .about {
             display: grid;
